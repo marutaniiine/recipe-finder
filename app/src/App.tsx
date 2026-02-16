@@ -380,30 +380,12 @@ function App() {
 
       <div className="app-container">
         <div className="input-section">
-          <IngredientInput onAddIngredient={handleAddIngredient} />
-
-          {selectedIngredients.length > 0 && (
-            <div className="selected-ingredients">
-              <h2>選択した食材 ({selectedIngredients.length})</h2>
-              <div className="ingredients-list">
-                {selectedIngredients.map(ingredient => (
-                  <div key={ingredient} className="ingredient-tag">
-                    <span>{ingredient}</span>
-                    <button
-                      className="remove-btn"
-                      onClick={() => handleRemoveIngredient(ingredient)}
-                      aria-label={`${ingredient}を削除`}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                ))}
-              </div>
-              <button className="btn btn-secondary" onClick={handleClear}>
-                クリア
-              </button>
-            </div>
-          )}
+          <IngredientInput
+            onAddIngredient={handleAddIngredient}
+            selectedIngredients={selectedIngredients}
+            onRemoveIngredient={handleRemoveIngredient}
+            onClear={handleClear}
+          />
         </div>
 
         <div className="results-section">

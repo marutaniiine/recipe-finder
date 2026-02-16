@@ -3,6 +3,9 @@ import './IngredientInput.css';
 
 interface IngredientInputProps {
   onAddIngredient: (ingredient: string) => void;
+  selectedIngredients: string[];
+  onRemoveIngredient: (ingredient: string) => void;
+  onClear: () => void;
 }
 
 interface IngredientCategory {
@@ -51,7 +54,12 @@ const INGREDIENT_CATEGORIES: IngredientCategory[] = [
 
 const POPULAR_INGREDIENTS = INGREDIENT_CATEGORIES.flatMap(cat => cat.items);
 
-export default function IngredientInput({ onAddIngredient }: IngredientInputProps) {
+export default function IngredientInput({
+  onAddIngredient,
+  selectedIngredients,
+  onRemoveIngredient,
+  onClear,
+}: IngredientInputProps) {
   const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
@@ -89,7 +97,31 @@ export default function IngredientInput({ onAddIngredient }: IngredientInputProp
   };
 
   return (
-    <div className="ingredient-input">
+    <>
+      {selectedIngredients.length > 0 && (
+        <div className="selected-ingredients">
+          <h2>選択した食材 ({selectedIngredients.length})</h2>
+          <div className="ingredients-list">
+            {selectedIngredients.map(ingredient => (
+              <div key={ingredient} className="ingredient-tag">
+                <span>{ingredient}</span>
+                <button
+                  className="remove-btn"
+                  onClick={() => onRemoveIngredient(ingredient)}
+                  aria-label={`${ingredient}を削除`}
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+          <button className="btn btn-secondary" onClick={onClear}>
+            クリア
+          </button>
+        </div>
+      )}
+
+      <div className="ingredient-input">
       <h2>食材を追加</h2>
       <div className="input-wrapper">
         <input
@@ -147,6 +179,7 @@ export default function IngredientInput({ onAddIngredient }: IngredientInputProp
           ))}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
