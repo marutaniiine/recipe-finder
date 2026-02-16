@@ -175,6 +175,42 @@
   letter-spacing: 0.5px;
 }
 
+.cooking-steps {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.cooking-step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  align-items: flex-start;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.step-text {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding-top: 0.25rem;
+}
+
 .nutrition-bars {
   display: flex;
   flex-direction: column;

@@ -10,6 +10,7 @@ interface Recipe {
   description: string;
   difficulty: 'easy' | 'medium' | 'hard';
   cookTime: number;
+  steps: string[];
   nutrition: {
     calories: number;
     protein: number;
@@ -26,6 +27,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: '日本の国民食。甘口から辛口まで好みで調整できる定番メニュー',
     difficulty: 'medium',
     cookTime: 40,
+    steps: [
+      '鶏肉をサイコロ状に切り、塩こしょうで味付けする',
+      '玉ねぎ、ニンジン、ジャガイモをそれぞれ食べやすい大きさに切る',
+      '鍋に油を熱し、野菜と鶏肉を炒める',
+      '水を加えて煮込み、野菜が柔らかくなったらカレーペーストを入れる',
+      'お米を別に炊いて、カレーをかけて完成'
+    ],
     nutrition: { calories: 520, protein: 18, carbs: 65, fat: 18 }
   },
   {
@@ -35,6 +43,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: '牛肉の旨味がたっぷり。濃厚でコクのあるカレー',
     difficulty: 'medium',
     cookTime: 50,
+    steps: [
+      '牛肉を食べやすいサイズに切る',
+      '玉ねぎ、ニンジン、ジャガイモを準備する',
+      '鍋に油を熱し、牛肉を焼いて色を変える',
+      '野菜を加えて炒め、水を注ぐ',
+      '沸騰後はカレーペーストを入れて、とろっとするまで煮込む'
+    ],
     nutrition: { calories: 580, protein: 25, carbs: 65, fat: 22 }
   },
   {
@@ -44,6 +59,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'フレッシュなトマトを使ったイタリアンスタイルのパスタ',
     difficulty: 'easy',
     cookTime: 15,
+    steps: [
+      '塩沸騰したお湯でパスタを表示時間通り茹でる',
+      'ニンニクをみじん切りにして、オリーブオイルで香りを出す',
+      'トマトをダイス状に切り、ニンニクオイルに加える',
+      '茹でたパスタをフライパンに入れ、トマトと絡める',
+      '塩で味を調整して完成'
+    ],
     nutrition: { calories: 320, protein: 12, carbs: 55, fat: 8 }
   },
   {
@@ -53,6 +75,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'コトコト煮詰めたトマトソース。奥深い味わい',
     difficulty: 'medium',
     cookTime: 25,
+    steps: [
+      'ニンニクと玉ねぎをみじん切りにして、オリーブオイルで炒める',
+      'トマトをみじん切りにして、玉ねぎが透き通ったら加える',
+      '弱火で15分ほど煮詰めて、ソースの味を深める',
+      '塩沸騰したお湯でパスタを表示時間通り茹でる',
+      '茹でたパスタをソースと合わせ、塩で味を整えて完成'
+    ],
     nutrition: { calories: 380, protein: 14, carbs: 58, fat: 10 }
   },
   {
@@ -62,6 +91,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ひき肉の旨味がたっぷり。子どもから大人まで大好きな一品',
     difficulty: 'medium',
     cookTime: 30,
+    steps: [
+      'ニンニクと玉ねぎをみじん切りにして、オリーブオイルで炒める',
+      '豚肉を加えて色が変わるまで炒める',
+      'トマトをみじん切りにして加え、弱火で20分ほど煮詰める',
+      '塩沸騰したお湯でパスタを表示時間通り茹でる',
+      '茹でたパスタにミートソースをかけて完成'
+    ],
     nutrition: { calories: 520, protein: 22, carbs: 60, fat: 18 }
   },
   {
@@ -71,6 +107,12 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'シンプルだけど美味しい。どんな料理のおかずに最適',
     difficulty: 'easy',
     cookTime: 10,
+    steps: [
+      'ニンニクをみじん切りにして、オイルで弱火から中火で炒める',
+      'キャベツを食べやすい大きさに切る',
+      'ニンニクの香りが出たらキャベツを加えて、強火で炒める',
+      'キャベツがしんなりしたら、塩とコショウで味を整えて完成'
+    ],
     nutrition: { calories: 140, protein: 5, carbs: 18, fat: 6 }
   },
   {
@@ -80,6 +122,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ボリューム満点。ご飯がすすむおかず',
     difficulty: 'easy',
     cookTime: 15,
+    steps: [
+      '豚肉をサイコロ状に切り、ニンニクをみじん切りにする',
+      'キャベツを食べやすい大きさに切る',
+      'フライパンに油を熱し、豚肉とニンニクを炒める',
+      '豚肉に火が通ったら、キャベツを加えて強火で炒める',
+      '醤油を回しかけて味を調え、完成'
+    ],
     nutrition: { calories: 320, protein: 20, carbs: 15, fat: 18 }
   },
   {
@@ -89,6 +138,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ふわふわのオムレツ。朝食にぴったり',
     difficulty: 'medium',
     cookTime: 12,
+    steps: [
+      '卵を3個ボウルに割り入れ、塩を加えてよく混ぜる',
+      'フライパンにバターを熱し、卵液を流し入れる',
+      '半熟のうちに片方を手前に寄せ、チーズを乗せる',
+      '卵を二つ折りにして皿に移す',
+      'パセリをふりかけて完成'
+    ],
     nutrition: { calories: 280, protein: 18, carbs: 3, fat: 22 }
   },
   {
@@ -98,6 +154,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: '甘い卵焼き。毎日のお弁当にぴったり',
     difficulty: 'easy',
     cookTime: 8,
+    steps: [
+      '卵を3個ボウルに割り入れ、砂糖と塩少々を加える',
+      'よく混ぜて、ふるいで漉す',
+      '卵焼きパンに油を敷き、弱火で加熱する',
+      '卵液の1/3を流し入れ、半熟のうちに手前から奥へ折る',
+      'この動作を3回繰り返して、完成'
+    ],
     nutrition: { calories: 200, protein: 12, carbs: 8, fat: 14 }
   },
   {
@@ -107,6 +170,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ヘルシーで栄養満点。ジムトレ後の定番',
     difficulty: 'easy',
     cookTime: 20,
+    steps: [
+      '鶏肉を塩沸騰したお湯で15分加熱し、火を通す',
+      '加熱後、冷ましてから食べやすいサイズに裂く',
+      'レタスを洗い、手でちぎって盛り付ける',
+      'トマトとキュウリを薄切りにして加える',
+      '鶏肉をのせて、ドレッシングをかけて完成'
+    ],
     nutrition: { calories: 280, protein: 32, carbs: 15, fat: 10 }
   },
   {
@@ -116,6 +186,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'シンプルな野菜サラダ。毎日食べたい',
     difficulty: 'easy',
     cookTime: 5,
+    steps: [
+      'レタスを洗い、水気を取ってから手でちぎる',
+      'キュウリをスライスし、塩でさっと和える',
+      'トマトを食べやすいサイズに切る',
+      '野菜をボウルに入れてさっと混ぜる',
+      'ドレッシングとオリーブオイルをかけて完成'
+    ],
     nutrition: { calories: 120, protein: 4, carbs: 18, fat: 4 }
   },
   {
@@ -125,6 +202,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: '手早く作れる。ご飯がすすむおかず',
     difficulty: 'easy',
     cookTime: 25,
+    steps: [
+      '豚肉をスライスし、玉ねぎとニンジンを薄く切る',
+      'フライパンに油を敷き、豚肉を炒める',
+      '豚肉の色が変わったら玉ねぎとニンジンを加える',
+      '醤油とみりんを加えて、15分ほど煮詰める',
+      'ご飯にのせて完成'
+    ],
     nutrition: { calories: 450, protein: 22, carbs: 58, fat: 12 }
   },
   {
@@ -134,6 +218,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'さっぱりした鶏肉の丼。ヘルシー',
     difficulty: 'easy',
     cookTime: 20,
+    steps: [
+      '鶏肉をサイコロ状に切り、玉ねぎをスライスする',
+      'ニンニクをみじん切りにして、フライパンで香りを出す',
+      '鶏肉を加えて炒め、色が変わるまで加熱',
+      '玉ねぎを加えて、醤油とみりんで味付けする',
+      'ご飯にのせて完成'
+    ],
     nutrition: { calories: 380, protein: 28, carbs: 50, fat: 8 }
   },
   {
@@ -143,6 +234,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'イタリアンスープ。野菜がたっぷり、ボリューミー',
     difficulty: 'medium',
     cookTime: 30,
+    steps: [
+      'ニンニク、ニンジン、セロリをみじん切りにする',
+      'キャベツをざく切りにしてトマトをダイス状に切る',
+      'オリーブオイルで香味野菜を炒め、野菜を加える',
+      '水を注いで煮込む。野菜が柔らかくなったらパスタを加える',
+      'パスタが茹で上がったら、塩で味を調えて完成'
+    ],
     nutrition: { calories: 180, protein: 8, carbs: 28, fat: 4 }
   },
   {
@@ -152,6 +250,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'シンプルで懐かしい味わい。朝食の定番',
     difficulty: 'easy',
     cookTime: 20,
+    steps: [
+      '玉ねぎをくし切りに、ニンジンはいちょう切りにする',
+      'じゃがいもを乱切りにして、水に浸す',
+      '鍋に水を沸かし、玉ねぎとニンジンを加える',
+      'じゃがいもを加えて15分煮込む',
+      'コンソメと塩で味を整えて完成'
+    ],
     nutrition: { calories: 140, protein: 6, carbs: 20, fat: 3 }
   },
   {
@@ -161,6 +266,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: '日本の心。毎日のご飯に欠かせない',
     difficulty: 'easy',
     cookTime: 10,
+    steps: [
+      'だし汁を鍋に入れて火にかける',
+      '玉ねぎを薄切りにして、沸騰したら加える',
+      '豆腐を食べやすいサイズに切り、加える',
+      'わかめを戻して加え、一煮立ちさせる',
+      '火を止めて、味噌を溶き入れて完成'
+    ],
     nutrition: { calories: 100, protein: 8, carbs: 8, fat: 3 }
   },
   {
@@ -170,6 +282,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'シンプルなステーキ。肉本来の味を引き出す',
     difficulty: 'medium',
     cookTime: 20,
+    steps: [
+      '牛肉を冷蔵庫から出して、常温に戻す',
+      '塩とコショウをふり、15分置く',
+      'フライパンを強火で熱し、牛肉を入れて両面焼く',
+      'バターとニンニクを加えて香りを出す',
+      'アルミホイルで包んで3分休ませて完成'
+    ],
     nutrition: { calories: 580, protein: 50, carbs: 0, fat: 42 }
   },
   {
@@ -179,6 +298,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'シンプルで美味しい。ご飯のおかずに最適',
     difficulty: 'easy',
     cookTime: 25,
+    steps: [
+      '鶏肉に塩とコショウをふり、15分置く',
+      'ニンニクをみじん切りにする',
+      'フライパンに油を敷き、鶏肉の皮目から焼く',
+      '片面が焼けたら裏返し、ニンニクを加える',
+      '完全に火が通ったら完成'
+    ],
     nutrition: { calories: 280, protein: 38, carbs: 0, fat: 14 }
   },
   {
@@ -188,6 +314,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ヘルシーで栄養満点。野菜もたっぷり',
     difficulty: 'medium',
     cookTime: 20,
+    steps: [
+      'キャベツをざく切りにし、ニンジンを千切りにする',
+      'しらたきを適度な長さに切り、一度下茹でする',
+      '鍋に昆布を敷いて水を加え、沸騰させる',
+      '豚肉を1枚ずつ入れてしゃぶしゃぶしながら加熱',
+      '野菜としらたきを加えて、ポン酢で食べる'
+    ],
     nutrition: { calories: 250, protein: 25, carbs: 12, fat: 10 }
   },
   {
@@ -197,6 +330,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ニンニクの香りが食欲をそそる炒飯',
     difficulty: 'easy',
     cookTime: 15,
+    steps: [
+      'ニンニクをみじん切りにして、卵を軽く混ぜておく',
+      'フライパンにバターを敷き、ニンニクを炒める',
+      '冷やご飯を加えてほぐしながら炒める',
+      'ご飯がパラパラになったら、卵を加える',
+      '塩とコショウで味を調えて完成'
+    ],
     nutrition: { calories: 380, protein: 12, carbs: 52, fat: 14 }
   },
   {
@@ -206,6 +346,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'えびの香りが引き立つ上品な炒飯',
     difficulty: 'medium',
     cookTime: 20,
+    steps: [
+      'えびを塩水で洗い、背わたを取り除いて水気を切る',
+      'ニンニクをみじん切りにして、卵を軽く混ぜておく',
+      'フライパンに油を敷き、えびを炒める',
+      'えびの色が変わったら、ニンニクと冷やご飯を加える',
+      'ご飯がパラパラになったら卵を加え、塩と醤油で味を調えて完成'
+    ],
     nutrition: { calories: 420, protein: 18, carbs: 50, fat: 16 }
   },
   {
@@ -215,6 +362,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'グリーンで栄養満点。朝食やスナックに最適',
     difficulty: 'easy',
     cookTime: 5,
+    steps: [
+      'キャベツを食べやすい大きさにちぎる',
+      'ニンジンを皮ごと粗く切り、バナナを輪切りにする',
+      'ミキサーにキャベツ、ニンジン、バナナを入れる',
+      'ヨーグルトを加えて、はちみつで甘みを調える',
+      'なめらかになるまでミキサーで混ぜて完成'
+    ],
     nutrition: { calories: 150, protein: 6, carbs: 28, fat: 2 }
   },
   {
@@ -224,6 +378,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ジューシーなハンバーグ。子どもから大人まで大好き',
     difficulty: 'medium',
     cookTime: 30,
+    steps: [
+      '玉ねぎとニンニクをみじん切りにして、フライパンで炒める',
+      '豚肉をボウルに入れ、炒めた玉ねぎ、パン粉、卵、塩を加えてこねる',
+      'こねた肉を2等分してハンバーグ型に成形する',
+      'フライパンに油を敷き、ハンバーグを焼く',
+      '両面が焼けたら、蓋をして弱火で10分蒸し焼きにして完成'
+    ],
     nutrition: { calories: 420, protein: 28, carbs: 15, fat: 26 }
   },
   {
@@ -233,6 +394,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: '野菜がたっぷり。体が温まるスープ',
     difficulty: 'easy',
     cookTime: 20,
+    steps: [
+      'キャベツをざく切りに、玉ねぎをくし切りに、ニンジンをいちょう切りにする',
+      '鍋に水を注ぎ、沸騰させる',
+      'キャベツ、玉ねぎ、ニンジンを加える',
+      '野菜が柔らかくなるまで15分煮込む',
+      'コンソメと塩で味を調えて完成'
+    ],
     nutrition: { calories: 120, protein: 5, carbs: 18, fat: 3 }
   },
   {
@@ -242,6 +410,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'シンプルで栄養満点。毎日のおかず',
     difficulty: 'easy',
     cookTime: 12,
+    steps: [
+      'キャベツをざく切りに、玉ねぎをくし切りに、ニンジンを千切りにする',
+      'ニンニクをみじん切りにする',
+      'フライパンに油を敷き、ニンニクを炒める',
+      'ニンジンと玉ねぎを加えて炒める',
+      'キャベツを加えて強火で炒め、塩で味を調えて完成'
+    ],
     nutrition: { calories: 160, protein: 6, carbs: 20, fat: 7 }
   },
   {
@@ -251,6 +426,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'カリカリジューシー。つまみにも最高',
     difficulty: 'medium',
     cookTime: 25,
+    steps: [
+      '鶏肉をサイコロ状に切り、醤油とニンニクで漬ける',
+      '30分以上冷蔵庫で漬け込む',
+      '鶏肉に小麦粉をコーティングする',
+      '揚げ油を180℃に熱し、鶏肉を揚げる',
+      '皮がカリカリになるまで揚げて、完成'
+    ],
     nutrition: { calories: 380, protein: 32, carbs: 12, fat: 22 }
   },
   {
@@ -260,6 +442,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'きのこの香りが引き立つ上品なパスタ',
     difficulty: 'easy',
     cookTime: 18,
+    steps: [
+      '塩沸騰したお湯でパスタを表示時間通り茹でる',
+      'きのこを薄切りにして、ニンニクをみじん切りにする',
+      'オリーブオイルでニンニクを炒め、香りを出す',
+      'きのこを加えてしんなりするまで炒める',
+      '茹でたパスタを加えて絡め、塩で味を調え、パセリをふって完成'
+    ],
     nutrition: { calories: 320, protein: 12, carbs: 55, fat: 8 }
   },
   {
@@ -269,6 +458,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ベーコンの香りがたまらない。栄養も満点',
     difficulty: 'easy',
     cookTime: 18,
+    steps: [
+      '塩沸騰したお湯でパスタを表示時間通り茹でる',
+      'ベーコンを食べやすい幅に切り、ニンニクをみじん切りにする',
+      'ほうれん草を塩茹でして、食べやすい長さに切る',
+      'オリーブオイルでニンニクを炒め、ベーコンを加える',
+      'ベーコンがカリカリになったら、ほうれん草と茹でたパスタを加えて絡め、塩で味を調えて完成'
+    ],
     nutrition: { calories: 420, protein: 18, carbs: 55, fat: 14 }
   },
   {
@@ -278,6 +474,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ピリ辛で旨い。ご飯がすすむ中華料理',
     difficulty: 'medium',
     cookTime: 20,
+    steps: [
+      '豆腐を食べやすいサイズに切り、ニンニクをみじん切りにする',
+      'フライパンに油を敷き、豚肉を炒める',
+      '豆板醤とニンニクを加えて、香りを出す',
+      '豆腐とスープを加えて、15分煮込む',
+      '水溶き片栗粉でとろみをつけ、塩で味を調えて完成'
+    ],
     nutrition: { calories: 280, protein: 20, carbs: 12, fat: 16 }
   },
   {
@@ -287,6 +490,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: '揚げたての野菜天。サクサク食感が最高',
     difficulty: 'medium',
     cookTime: 30,
+    steps: [
+      'ナス、ニンジン、玉ねぎを食べやすい大きさに切る',
+      '小麦粉を水で溶いて、天ぷら粉を作る',
+      '揚げ油を180℃に熱する',
+      '野菜に天ぷら粉をコーティングして、カラッと揚げる',
+      'ご飯に天つゆをかけ、揚げた野菜をのせて完成'
+    ],
     nutrition: { calories: 480, protein: 12, carbs: 62, fat: 20 }
   },
   {
@@ -296,6 +506,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'プリプリのえび。タルタルソースをたっぷり',
     difficulty: 'medium',
     cookTime: 25,
+    steps: [
+      'えびを塩水で洗い、背わたを取り除いて腹を開く',
+      '小麦粉を軽くふり、溶いた卵にくぐらせ、パン粉をまぶす',
+      '揚げ油を170℃に熱する',
+      'えびが縮まないよう、背側を下にして揚げる',
+      'パン粉がキツネ色になったら油から上げて、完成'
+    ],
     nutrition: { calories: 320, protein: 18, carbs: 20, fat: 16 }
   },
   {
@@ -305,6 +522,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'ボリューム満点。冬に食べたい一品',
     difficulty: 'easy',
     cookTime: 20,
+    steps: [
+      '牛肉を薄くスライスし、玉ねぎを薄く切る',
+      '鍋にだし汁を入れて、沸騰させる',
+      '牛肉と玉ねぎを加えて、アクを取る',
+      '醤油とみりんで味を調え、10分煮込む',
+      'うどんを別に加熱して、丼に盛り、スープをかけて完成'
+    ],
     nutrition: { calories: 480, protein: 20, carbs: 68, fat: 12 }
   },
   {
@@ -314,6 +538,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'さっぱりとした鶏の味わい。夏にぴったり',
     difficulty: 'easy',
     cookTime: 18,
+    steps: [
+      '鶏肉をスライスし、ネギを斜め切りにする',
+      'だし汁を鍋に入れ、沸騰させる',
+      '鶏肉とネギを加え、醤油とみりんで味を調える',
+      'そばを別に塩茹でし、冷水で締める',
+      '丼にそばを盛り、スープを注いで完成'
+    ],
     nutrition: { calories: 380, protein: 22, carbs: 55, fat: 8 }
   },
   {
@@ -323,6 +554,13 @@ const RECIPE_DATABASE: Recipe[] = [
     description: 'えびのプリプリ感とマヨの濃厚さが最高',
     difficulty: 'medium',
     cookTime: 20,
+    steps: [
+      'えびを塩水で洗い、背わたを取り除く',
+      'ニンニクをみじん切りに、玉ねぎをみじん切りにする',
+      'えびに塩こしょうをふり、片栗粉をまぶす',
+      'フライパンに油を敷き、えびを炒める',
+      'えびの色が変わったら、マヨネーズとニンニク、玉ねぎを混ぜたタレを絡めて完成'
+    ],
     nutrition: { calories: 340, protein: 16, carbs: 15, fat: 24 }
   },
 ];

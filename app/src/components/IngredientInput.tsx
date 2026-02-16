@@ -62,6 +62,7 @@ export default function IngredientInput({
 }: IngredientInputProps) {
   const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [expandedCategories, setExpandedCategories] = useState<{[key: string]: boolean}>({});
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
@@ -94,6 +95,13 @@ export default function IngredientInput({
 
   const handleSuggestionClick = (suggestion: string) => {
     handleAddIngredient(suggestion);
+  };
+
+  const toggleCategory = (categoryName: string) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryName]: !prev[categoryName]
+    }));
   };
 
   return (
@@ -161,22 +169,34 @@ export default function IngredientInput({
       <div className="common-ingredients">
         <p className="common-label">よくある食材:</p>
         <div className="ingredient-categories">
-          {INGREDIENT_CATEGORIES.map(category => (
-            <div key={category.name} className="ingredient-category-group">
-              <h3 className="category-title">{category.emoji} {category.name}</h3>
-              <div className="quick-add-buttons">
-                {category.items.map(ingredient => (
-                  <button
-                    key={ingredient}
-                    className="quick-add-btn"
-                    onClick={() => handleAddIngredient(ingredient)}
-                  >
-                    {ingredient}
-                  </button>
-                ))}
+          {INGREDIENT_CATEGORIES.map(category => {
+            const isExpanded = expandedCategories[category.name] !== false;
+            return (
+              <div key={category.name} className="ingredient-category-group">
+                <button
+                  className="category-toggle"
+                  onClick={() => toggleCategory(category.name)}
+                >
+                  <h3 className="category-title">
+                    {isExpanded ? '▼' : '▶'} {category.emoji} {category.name}
+                  </h3>
+                </button>
+                {isExpanded && (
+                  <div className="quick-add-buttons">
+                    {category.items.map(ingredient => (
+                      <button
+                        key={ingredient}
+                        className="quick-add-btn"
+                        onClick={() => handleAddIngredient(ingredient)}
+                      >
+                        {ingredient}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       </div>

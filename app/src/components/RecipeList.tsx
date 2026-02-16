@@ -8,6 +8,7 @@ interface Recipe {
   description: string;
   difficulty: 'easy' | 'medium' | 'hard';
   cookTime: number;
+  steps: string[];
   nutrition: {
     calories: number;
     protein: number;

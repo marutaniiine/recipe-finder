@@ -8,6 +8,7 @@ interface Recipe {
   description: string;
   difficulty: 'easy' | 'medium' | 'hard';
   cookTime: number;
+  steps: string[];
   nutrition: {
     calories: number;
     protein: number;
@@ -105,6 +106,18 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
 
       {expanded && (
         <div className="recipe-details">
+          <div className="details-section">
+            <h4>調理方法</h4>
+            <ol className="cooking-steps">
+              {recipe.steps.map((step, index) => (
+                <li key={index} className="cooking-step">
+                  <span className="step-number">{index + 1}</span>
+                  <span className="step-text">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+
           <div className="details-section">
             <h4>栄養バランス</h4>
             <div className="nutrition-bars">
