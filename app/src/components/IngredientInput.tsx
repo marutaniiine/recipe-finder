@@ -5,24 +5,51 @@ interface IngredientInputProps {
   onAddIngredient: (ingredient: string) => void;
 }
 
-const POPULAR_INGREDIENTS = [
-  // 野菜
-  'トマト', '玉ねぎ', 'ニンジン', 'ジャガイモ', 'キャベツ', 'レタス', 'キュウリ',
-  'ナス', 'パプリカ', 'ほうれん草', 'ブロッコリー', 'カリフラワー', 'インゲン',
-  'トウモロコシ', 'セロリ', 'アスパラガス', 'もやし', 'しらたき', 'わかめ',
-  // 肉・魚
-  '鶏肉', '豚肉', '牛肉', 'ベーコン', 'えび', 'イカ', '豆腐',
-  // 調味料・油
-  'ニンニク', '塩', 'コショウ', 'オリーブオイル', 'バター', '醤油', 'みりん',
-  '味噌', '豆板醤', 'ポン酢', 'だし汁', 'コンソメ', 'カレーペースト',
-  // 穀物・麺
-  'お米', 'パスタ', 'うどん', 'そば', '小麦粉', 'パン粉', 'マヨネーズ',
-  // 乳製品・卵
-  '卵', 'チーズ', 'ヨーグルト', 'バター',
-  // その他
-  'ハチミツ', 'バナナ', 'きのこ', 'ドレッシング', 'パセリ', '片栗粉',
-  'タルタルソース',
+interface IngredientCategory {
+  name: string;
+  emoji: string;
+  items: string[];
+}
+
+const INGREDIENT_CATEGORIES: IngredientCategory[] = [
+  {
+    name: '野菜',
+    emoji: '🥬',
+    items: ['トマト', '玉ねぎ', 'ニンジン', 'ジャガイモ', 'キャベツ', 'レタス', 'キュウリ',
+            'ナス', 'パプリカ', 'ほうれん草', 'ブロッコリー', 'カリフラワー', 'インゲン',
+            'トウモロコシ', 'セロリ', 'アスパラガス', 'もやし', 'しらたき', 'わかめ']
+  },
+  {
+    name: '肉・魚',
+    emoji: '🍗',
+    items: ['鶏肉', '豚肉', '牛肉', 'ベーコン', 'えび', 'イカ', '豆腐']
+  },
+  {
+    name: '調味料・油',
+    emoji: '🧂',
+    items: ['ニンニク', '塩', 'コショウ', 'オリーブオイル', 'バター', '醤油', 'みりん',
+            '味噌', '豆板醤', 'ポン酢', 'だし汁', 'コンソメ', 'カレーペースト', '油',
+            'サラダ油', 'ごま油', 'ハチミツ', 'ケチャップ', 'マスタード', 'タバスコ']
+  },
+  {
+    name: '穀物・麺',
+    emoji: '🍚',
+    items: ['お米', 'パスタ', 'うどん', 'そば', '小麦粉', 'パン粉', 'マヨネーズ']
+  },
+  {
+    name: '乳製品・卵',
+    emoji: '🥛',
+    items: ['卵', 'チーズ', 'ヨーグルト', 'バター', 'ミルク', 'アイスクリーム']
+  },
+  {
+    name: 'その他',
+    emoji: '🌟',
+    items: ['ハチミツ', 'バナナ', 'きのこ', 'ドレッシング', 'パセリ', '片栗粉',
+            'タルタルソース', 'チリソース', '豆', 'トウモロコシ缶']
+  }
 ];
+
+const POPULAR_INGREDIENTS = INGREDIENT_CATEGORIES.flatMap(cat => cat.items);
 
 export default function IngredientInput({ onAddIngredient }: IngredientInputProps) {
   const [inputValue, setInputValue] = useState('');
@@ -101,15 +128,22 @@ export default function IngredientInput({ onAddIngredient }: IngredientInputProp
 
       <div className="common-ingredients">
         <p className="common-label">よくある食材:</p>
-        <div className="quick-add-buttons">
-          {POPULAR_INGREDIENTS.slice(0, 24).map(ingredient => (
-            <button
-              key={ingredient}
-              className="quick-add-btn"
-              onClick={() => handleAddIngredient(ingredient)}
-            >
-              {ingredient}
-            </button>
+        <div className="ingredient-categories">
+          {INGREDIENT_CATEGORIES.map(category => (
+            <div key={category.name} className="ingredient-category-group">
+              <h3 className="category-title">{category.emoji} {category.name}</h3>
+              <div className="quick-add-buttons">
+                {category.items.map(ingredient => (
+                  <button
+                    key={ingredient}
+                    className="quick-add-btn"
+                    onClick={() => handleAddIngredient(ingredient)}
+                  >
+                    {ingredient}
+                  </button>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

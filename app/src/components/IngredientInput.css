@@ -104,10 +104,31 @@
 }
 
 .common-label {
-  margin: 0 0 1rem 0;
-  font-size: 0.9rem;
-  color: #6b7280;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.95rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.ingredient-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ingredient-category-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.category-title {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #374151;
   font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f3f4f6;
 }
 
 .quick-add-buttons {
