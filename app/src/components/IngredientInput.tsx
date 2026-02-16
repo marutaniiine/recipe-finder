@@ -6,10 +6,22 @@ interface IngredientInputProps {
 }
 
 const POPULAR_INGREDIENTS = [
-  'トマト', 'タマネギ', 'ニンニク', 'パスタ', 'お米',
-  '鶏肉', '豚肉', '牛肉', '卵', 'バター',
-  'レタス', 'キャベツ', 'ニンジン', 'キュウリ', 'ジャガイモ',
-  'セロリ', 'バナナ', 'ヨーグルト', 'チーズ', 'オイル',
+  // 野菜
+  'トマト', '玉ねぎ', 'ニンジン', 'ジャガイモ', 'キャベツ', 'レタス', 'キュウリ',
+  'ナス', 'パプリカ', 'ほうれん草', 'ブロッコリー', 'カリフラワー', 'インゲン',
+  'トウモロコシ', 'セロリ', 'アスパラガス', 'もやし', 'しらたき', 'わかめ',
+  // 肉・魚
+  '鶏肉', '豚肉', '牛肉', 'ベーコン', 'えび', 'イカ', '豆腐',
+  // 調味料・油
+  'ニンニク', '塩', 'コショウ', 'オリーブオイル', 'バター', '醤油', 'みりん',
+  '味噌', '豆板醤', 'ポン酢', 'だし汁', 'コンソメ', 'カレーペースト',
+  // 穀物・麺
+  'お米', 'パスタ', 'うどん', 'そば', '小麦粉', 'パン粉', 'マヨネーズ',
+  // 乳製品・卵
+  '卵', 'チーズ', 'ヨーグルト', 'バター',
+  // その他
+  'ハチミツ', 'バナナ', 'きのこ', 'ドレッシング', 'パセリ', '片栗粉',
+  'タルタルソース',
 ];
 
 export default function IngredientInput({ onAddIngredient }: IngredientInputProps) {
@@ -90,7 +102,7 @@ export default function IngredientInput({ onAddIngredient }: IngredientInputProp
       <div className="common-ingredients">
         <p className="common-label">よくある食材:</p>
         <div className="quick-add-buttons">
-          {POPULAR_INGREDIENTS.slice(0, 8).map(ingredient => (
+          {POPULAR_INGREDIENTS.slice(0, 24).map(ingredient => (
             <button
               key={ingredient}
               className="quick-add-btn"
