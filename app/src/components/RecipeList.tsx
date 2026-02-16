@@ -1,21 +1,6 @@
 import RecipeCard from './RecipeCard';
 import './RecipeList.css';
-
-interface Recipe {
-  id: string;
-  name: string;
-  ingredients: string[];
-  description: string;
-  difficulty: 'easy' | 'medium' | 'hard';
-  cookTime: number;
-  steps: string[];
-  nutrition: {
-    calories: number;
-    protein: number;
-    carbs: number;
-    fat: number;
-  };
-}
+import type { Recipe } from '../data/recipes';
 
 interface RecipeListProps {
   recipes: Recipe[];
