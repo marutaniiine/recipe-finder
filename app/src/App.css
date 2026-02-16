@@ -64,7 +64,8 @@ body {
   width: 320px;
   min-width: 320px;
   max-width: 320px;
-  overflow-x: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .results-section {
